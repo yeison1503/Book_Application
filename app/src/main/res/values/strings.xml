@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Book Application</string>
+    <string name="Register_book">Registro de un Libro</string>
+    <string name="Genre">Género Literario</string>
+    <string name="suspense">Suspenso</string>
+    <string name="Terror">Terror</string>
+    <string name="infantile">Infantil</string>
+    <string name="fiction">Ficción</string>
+    <string name="score">Calificación</string>
+    <string name="number_one">1</string>
+    <string name="number_two">2</string>
+    <string name="number_three">3</string>
+    <string name="number_four">4</string>
+    <string name="number_five">5</string>
+    <string name="publication_date">Fecha de Publicación</string>
+    <string name="date_format">DD-MM-YYYY</string>
+    <string name="save">Guardar</string>
+    <string name="info">Nombre: %s \nAuthor: %s \nPáginas: %d \nResumen: %s \nGénero: %s \nCalificación: %d \n Fecha de Publicación %s</string>
+</resources>

@@ -75,8 +75,17 @@ class MainActivity : AppCompatActivity() {
 
 
 
-                    infoTextView.text = getString(R.string.info, nameBook, author, pages, abstract, genre, score, publicationDate)
-                }
+                    infoTextView.text =
+                        getString(
+                            R.string.info,
+                            nameBook,
+                            author,
+                            pages,
+                            abstract,
+                            genre,
+                            score,
+                            publicationDate)
+                    }
             }
         }
     }

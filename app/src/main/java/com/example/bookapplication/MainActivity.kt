@@ -1,7 +1,10 @@
 package com.example.bookapplication
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bookapplication.databinding.ActivityMainBinding
@@ -88,5 +91,23 @@ class MainActivity : AppCompatActivity() {
                     }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_overflow, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_sing_out -> goToLoginActivity()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun goToLoginActivity(){
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags =Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 }

@@ -14,7 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="@null" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_text_input_layout"
@@ -33,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
+            android:inputType="textEmailAddress"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 

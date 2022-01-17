@@ -23,5 +23,6 @@
     <string name="does_not_have_account"><u>¡No tienes cuenta Registrate!</u></string>
     <string name="repeat_password">Repita la contraseña</string>
     <string name="register">Registrar</string>
+    <string name="sing_out">Cerrar Sesión</string>
 
 </resources>

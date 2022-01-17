@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
 
                 if ( email == emailReceived && password == passwordReceived && email.isNotEmpty() && password.isNotEmpty() ){
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.flags =Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                 }else{
                     Toast.makeText(this@LoginActivity, "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show()

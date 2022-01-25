@@ -1,26 +1,41 @@
-package com.example.bookapplication
+package com.example.bookapplication.ui.newbook
 
 import android.app.DatePickerDialog
-import android.content.Intent
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.example.bookapplication.databinding.ActivityMainBinding
+import androidx.navigation.fragment.findNavController
+import com.example.bookapplication.R
+import com.example.bookapplication.databinding.FragmentNewBookBinding
+import com.example.bookapplication.model.Book
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class NewBookFragment : Fragment() {
 
-    private lateinit var mainBinding : ActivityMainBinding
+
+    private lateinit var newBookBinding: FragmentNewBookBinding
+    private lateinit var newBookviewModel: NewBookViewModel
+
     private var cal = Calendar.getInstance()
     private var publicationDate = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mainBinding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        newBookBinding = FragmentNewBookBinding.inflate(inflater, container, false)
+        newBookviewModel = ViewModelProvider(this).get(NewBookViewModel::class.java)
+        return newBookBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val dateSetListener = DatePickerDialog.OnDateSetListener{ _, year, month, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
@@ -30,14 +45,14 @@ class MainActivity : AppCompatActivity() {
             val format = "dd-MM-yyyy"
             val simpleDateFormat = SimpleDateFormat(format, Locale.US)
             publicationDate = simpleDateFormat.format(cal.time).toString()
-            mainBinding.publicationDateButton.text = publicationDate
+            newBookBinding.publicationDateButton.text = publicationDate
         }
 
-        with(mainBinding) {
+        with(newBookBinding) {
 
             publicationDateButton.setOnClickListener{
                 DatePickerDialog(
-                    this@MainActivity,
+                    requireContext(),
                     dateSetListener,
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
@@ -45,13 +60,14 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
 
+
             saveButton.setOnClickListener {
                 if (nameBookEditText.text?.isEmpty() == true ||
                     nameAuthorEditText.text?.isEmpty() == true ||
                     pagesEditText.text?.isEmpty() == true
                 ) {
                     Toast.makeText(
-                        applicationContext,
+                        requireContext(),
                         "Debe digitar nombre, autor y número de páginas",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -67,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                     if (infantileCheckBox.isChecked) genre += "Infantil"
                     if (fictionCheckBox.isChecked) genre += "Ficción"
 
-                   // var score = if (oneRadioButton.isChecked) 1 else 2
+                    // var score = if (oneRadioButton.isChecked) 1 else 2
                     val score = when {
                         oneRadioButton.isChecked -> 1
                         twoRadioButton.isChecked -> 2
@@ -76,38 +92,18 @@ class MainActivity : AppCompatActivity() {
                         else -> 5
                     }
 
+                    val book = Book(
+                            name = nameBook,
+                            author = author,
+                            pages = pages,
+                            abstract = abstract,
+                            genre = genre,
+                            score = score,
+                            publicationDate = publicationDate)
 
-
-                    infoTextView.text =
-                        getString(
-                            R.string.info,
-                            nameBook,
-                            author,
-                            pages,
-                            abstract,
-                            genre,
-                            score,
-                            publicationDate)
-                    }
+                    findNavController().navigate(NewBookFragmentDirections.actionNewBookFragmentToDetailFragment(book))
+                }
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_overflow, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.menu_sing_out -> goToLoginActivity()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun goToLoginActivity(){
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.flags =Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
     }
 }

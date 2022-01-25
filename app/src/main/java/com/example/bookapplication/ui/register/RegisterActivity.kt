@@ -1,11 +1,11 @@
-package com.example.bookapplication
+package com.example.bookapplication.ui.register
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.bookapplication.databinding.ActivityRegisterBinding
+import com.example.bookapplication.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
 

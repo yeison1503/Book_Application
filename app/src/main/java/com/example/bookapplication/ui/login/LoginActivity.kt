@@ -1,11 +1,12 @@
-package com.example.bookapplication
+package com.example.bookapplication.ui.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.bookapplication.ui.register.RegisterActivity
 import com.example.bookapplication.databinding.ActivityLoginBinding
-import java.util.zip.Inflater
+import com.example.bookapplication.ui.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -37,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
 
                 if ( email == emailReceived && password == passwordReceived && email.isNotEmpty() && password.isNotEmpty() ){
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra("email", email)
+                    intent.putExtra("password", password)
                     intent.flags =Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                 }else{

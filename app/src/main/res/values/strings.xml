@@ -24,5 +24,7 @@
     <string name="repeat_password">Repita la contraseña</string>
     <string name="register">Registrar</string>
     <string name="sing_out">Cerrar Sesión</string>
+    <string name="example_title">El Sicoanalista</string>
+    <string name="example_author">john Katzenbach</string>
 
 </resources>

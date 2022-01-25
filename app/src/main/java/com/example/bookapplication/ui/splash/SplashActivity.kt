@@ -1,9 +1,10 @@
-package com.example.bookapplication
+package com.example.bookapplication.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.bookapplication.databinding.ActivitySplashBinding
+import com.example.bookapplication.ui.login.LoginActivity
 import java.util.*
 import kotlin.concurrent.timerTask
 
@@ -35,5 +36,6 @@ class SplashActivity : AppCompatActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        finish()
     }
 }

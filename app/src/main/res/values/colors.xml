@@ -11,4 +11,5 @@
     <color name="purple_light">#E1BEE7</color>
     <color name="purple_primary">#9C27B0</color>
     <color name="blue_accent">#03A9F4</color>
+    <color name="textColor">#020101</color>
 </resources>

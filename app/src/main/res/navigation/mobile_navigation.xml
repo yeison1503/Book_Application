@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/newBookFragment"
         android:name="com.example.bookapplication.ui.newbook.NewBookFragment"
-        android:label="NewBookFragment"
+        android:label="@string/title_new"
         tools:layout="@layout/fragment_new_book">
         <action
             android:id="@+id/action_newBookFragment_to_detailFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.bookapplication.ui.list.ListFragment"
-        android:label="fragment_list"
+        android:label="@string/title_list"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_newBookFragment"
@@ -32,4 +32,14 @@
             android:name="book"
             app:argType="com.example.bookapplication.model.Book" />
     </fragment>
+    <fragment
+        android:id="@+id/deleteFragment"
+        android:name="com.example.bookapplication.ui.delete.DeleteFragment"
+        android:label="@string/title_delete"
+        tools:layout="@layout/fragment_delete" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.bookapplication.ui.Update.UpdateFragment"
+        android:label="@string/title_update"
+        tools:layout="@layout/fragment_update" />
 </navigation>

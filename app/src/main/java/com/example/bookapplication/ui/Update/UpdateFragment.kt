@@ -7,26 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.bookapplication.R
+import com.example.bookapplication.databinding.FragmentUpdateBinding
 
 class UpdateFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = UpdateFragment()
-    }
-
-    private lateinit var viewModel: UpdateViewModel
+    private lateinit var updatedBinding: FragmentUpdateBinding
+    private lateinit var updatedViewModel: UpdateViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_update, container, false)
+        updatedBinding = FragmentUpdateBinding.inflate(inflater, container, false)
+        updatedViewModel = ViewModelProvider(this)[UpdateViewModel::class.java]
+        return updatedBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(UpdateViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
 }

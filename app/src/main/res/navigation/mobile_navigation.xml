@@ -30,7 +30,7 @@
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="book"
-            app:argType="com.example.bookapplication.model.Book" />
+            app:argType="com.example.bookapplication.local.Book" />
     </fragment>
     <fragment
         android:id="@+id/deleteFragment"

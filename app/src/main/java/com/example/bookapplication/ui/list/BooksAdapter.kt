@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookapplication.R
 import com.example.bookapplication.databinding.CardViewItemBookBinding
-import com.example.bookapplication.model.Book
+import com.example.bookapplication.local.Book
 
 class BooksAdapter (
     private val bookslist: ArrayList<Book>
@@ -23,6 +23,12 @@ class BooksAdapter (
     }
 
     override fun getItemCount(): Int = bookslist.size
+
+    fun appendItems(newList: ArrayList<Book>) {
+        bookslist.clear()
+        bookslist.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val binding = CardViewItemBookBinding.bind(itemView)

@@ -42,6 +42,13 @@
     <string name="title_activity_tabs">TabsActivity</string>
     <string name="book_name">"Nombre: "</string>
     <string name="search">Buscar</string>
-
+    <string name="warning_title">Advertencia</string>
+    <string name="delete_book_msg">¿Desea eliminar el libro %s del author %s?</string>
+    <string name="cancel">Cancelar</string>
+    <string name="accept">Aceptar</string>
+    <string name="Author">"Author: "</string>
+    <string name="number_pages">"Número de Paginas: "</string>
+    <string name="resumen">"Resumen: "</string>
+    <string name="update">Actualizar</string>
 
 </resources>

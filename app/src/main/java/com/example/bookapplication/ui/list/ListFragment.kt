@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bookapplication.R
-import com.example.bookapplication.databinding.ActivityRegisterBinding
 import com.example.bookapplication.databinding.FragmentListBinding
-import com.example.bookapplication.model.Book
+import com.example.bookapplication.local.Book
+
 
 class ListFragment : Fragment() {
 
@@ -34,40 +33,12 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        booksList.add(
-            Book(
-                "EL SICOANALISTA",
-                "JOHN KASTZENBACH",
-                200,
-                "MUY BUENO",
-                "Suspenso",
-                5,
-                "10-ene-2000"
-            )
-        )
+        listviewModel.loadBooksDone.observe(viewLifecycleOwner, {result->
+            onLoadBooksDoneSubscribe(result)
+        })
 
-        booksList.add(
-            Book(
-                "La chica del Tren",
-                "Paula Hawkins",
-                200,
-                "Una china con opceción",
-                "Suspenso",
-                4,
-                "1-feb-2018"
-            )
-        )
-        booksList.add(
-            Book(
-                "El Principito",
-                "Antoine Exupery",
-                150,
-                "Erase una vez",
-                "",
-                5,
-                "10-mar-1991"
-            )
-        )
+        listviewModel.loadBooks()
+
 
         booksAdapter = BooksAdapter(booksList)
 
@@ -79,9 +50,13 @@ class ListFragment : Fragment() {
 
         listBinding.newButton.setOnClickListener {
             findNavController().navigate(ListFragmentDirections.actionListFragmentToNewBookFragment())
-
         }
 
+    }
+
+    private fun onLoadBooksDoneSubscribe(booksListLoaded: ArrayList<Book>) {
+        booksList = booksListLoaded
+        booksAdapter.appendItems(booksList)
     }
 
 

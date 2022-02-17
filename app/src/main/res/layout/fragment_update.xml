@@ -38,7 +38,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/update_form_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_button" >
@@ -60,7 +61,7 @@
             android:id="@+id/name_author_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Autor:"
+            android:hint="@string/Author"
             tools:ignore="HardcodedText,TextContrasCheck,TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -81,8 +82,8 @@
             android:id="@+id/pages_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Número de Paginas:"
-            tools:ignore="HardcodedText,TextContrasCheck,TextContrastCheck"/>
+            android:hint="@string/number_pages"
+            android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,7 +102,7 @@
             android:id="@+id/abstract_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Resumen"
+            android:hint="@string/resumen"
             tools:ignore="HardcodedText,TextContrasCheck,TextContrastCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -247,5 +248,16 @@
         tools:ignore="RtlHardcoded,TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/update_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/update"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_book_text_input_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@
     package="com.example.bookapplication">
 
     <application
+        android:name=".BookAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,13 +19,12 @@
             android:theme="@style/Theme.BookApplication.NoActionBar"/>
         <activity
             android:name=".ui.drawer.DrawerActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_drawer"
             android:theme="@style/Theme.BookApplication.NoActionBar"/>
         <activity
             android:name=".ui.Bottom.BottomActivity"
-            android:exported="true"
-            android:label="@string/title_activity_bottom" >
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

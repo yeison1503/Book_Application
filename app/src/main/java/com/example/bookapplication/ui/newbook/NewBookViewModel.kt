@@ -21,7 +21,6 @@ class NewBookViewModel : ViewModel() {
     fun validateFields(nameBook: String, nameAuthor: String, pages: String) {
         if (nameBook.isEmpty() || nameAuthor.isEmpty() || pages.isEmpty()) {
             msg.value = "Debe digitar nombre, autor y número de páginas"
-
         } else {
             dataValidate.value = true
         }

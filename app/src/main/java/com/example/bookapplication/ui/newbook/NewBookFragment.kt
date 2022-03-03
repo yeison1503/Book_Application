@@ -96,7 +96,10 @@ private fun onDateValidateSuscribe(result: Boolean) {
             fourRadioButton.isChecked -> 4
             else -> 5
         }
-        newBookviewModel.saveBook(nameBook, author, pages, resumen, genre, score, publicationDate)
+        //Guarda el libro en modo local
+        //newBookviewModel.saveBook(nameBook, author, pages, resumen, genre, score, publicationDate)
+
+        newBookviewModel.saveBookServer(nameBook, author, pages, resumen, genre, score, publicationDate)
     }
 }
 

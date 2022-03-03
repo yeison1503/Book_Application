@@ -15,22 +15,14 @@
         <activity
             android:name=".ui.tabs.TabsActivity"
             android:exported="true"
-            android:label="@string/title_activity_tabs"
             android:theme="@style/Theme.BookApplication.NoActionBar"/>
         <activity
             android:name=".ui.drawer.DrawerActivity"
             android:exported="true"
-            android:label="@string/title_activity_drawer"
             android:theme="@style/Theme.BookApplication.NoActionBar"/>
         <activity
             android:name=".ui.Bottom.BottomActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
@@ -39,8 +31,14 @@
             android:exported="false" />
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:exported="false"
-            android:theme="@style/Splash" />
+            android:exported="true"
+            android:theme="@style/Splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true" />

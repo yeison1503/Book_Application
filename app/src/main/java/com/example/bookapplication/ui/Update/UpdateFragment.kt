@@ -28,9 +28,9 @@ class UpdateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        updatedViewModel.findBookDone.observe(viewLifecycleOwner, {result ->
+        updatedViewModel.findBookDone.observe(viewLifecycleOwner) { result ->
             onFindBookDoneSubscribe(result)
-        })
+        }
 
         with(updatedBinding){
             searchButton.setOnClickListener {

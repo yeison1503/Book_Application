@@ -44,6 +44,9 @@ class LoginActivity : AppCompatActivity() {
                 val password = passwordEditText.text.toString()
 
                 if (email.isNotEmpty() && password.isNotEmpty() ){
+
+                    //Para recuperar la contraseña
+                    //auth.sendPasswordResetEmail(email)
                     auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener() { task ->
                             if (task.isSuccessful) {

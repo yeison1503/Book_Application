@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.bookapplication.databinding.ActivityRegisterBinding
+import com.example.bookapplication.server.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
@@ -20,6 +22,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(registerBinding.root)
 
         auth = Firebase.auth
+
 
         with(registerBinding){
             registerButton.setOnClickListener{
@@ -40,6 +43,9 @@ class RegisterActivity : AppCompatActivity() {
                                 Log.d("Registro", "createUserWithEmail:success")
                                 //val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                                 //startActivity(intent)
+                                
+                                createUser(auth.currentUser?.uid, email)
+                                
                                 onBackPressed()
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -52,6 +58,18 @@ class RegisterActivity : AppCompatActivity() {
                 }else{
                     Toast.makeText(applicationContext, "Las contraseñas deben ser iguales", Toast.LENGTH_SHORT).show()
                 }
+            }
+        }
+    }
+
+    private fun createUser(uid: String?, email: String) {
+        val db = Firebase.firestore
+        val user = User(uid = uid, email = email)
+
+        uid?.let {
+                uid -> db.collection("users").document(uid).set(user)
+            .addOnCompleteListener{
+                Toast.makeText(baseContext, "Usuario creado exitosamente", Toast.LENGTH_SHORT).show()
             }
         }
     }

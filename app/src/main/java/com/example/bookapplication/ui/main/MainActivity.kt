@@ -8,11 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.bookapplication.R
 import com.example.bookapplication.databinding.ActivityMainBinding
 import com.example.bookapplication.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainBinding : ActivityMainBinding
+    private lateinit var auth: FirebaseAuth
     private var cal = Calendar.getInstance()
     private var publicationDate = ""
     private var emailReceived : String? = ""
@@ -22,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
+
+        auth = Firebase.auth
 
       /*val credential = intent.extras
         if (credential != null){
@@ -105,7 +111,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.menu_sing_out -> goToLoginActivity()
+            R.id.menu_sing_out -> {
+                auth.signOut()
+                goToLoginActivity()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

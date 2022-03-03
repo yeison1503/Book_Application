@@ -1,4 +1,4 @@
-package com.example.bookapplication.repository
+package com.example.bookapplication.local.localRepository
 
 import com.example.bookapplication.BookAplication
 import com.example.bookapplication.local.Book

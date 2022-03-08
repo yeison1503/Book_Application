@@ -7,28 +7,38 @@ import com.example.bookapplication.local.Book
 import com.example.bookapplication.local.localRepository.BookRepository
 import com.example.bookapplication.server.BookServer
 import com.example.bookapplication.server.repository.BookServerRepository
+import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class DeleteViewModel : ViewModel() {
 
-    val bookAplication = BookRepository()
-    val bookServerRepository = BookServerRepository()
+    private val bookAplication = BookRepository()
+    private val bookServerRepository = BookServerRepository()
 
-    private val findbook:MutableLiveData<Book> = MutableLiveData()
+    private val findbook: MutableLiveData<Book> = MutableLiveData()
     val findBookDone: LiveData<Book> = findbook
 
-    private val findbookServer:MutableLiveData<BookServer> = MutableLiveData()
-    val findBookServerDone: LiveData<BookServer> = findbookServer
+    private val findbookServer: MutableLiveData<BookServer?> = MutableLiveData()
+    val findBookServerDone: MutableLiveData<BookServer?> = findbookServer
 
     fun searchBook(nameBook: String) {
         GlobalScope.launch(Dispatchers.IO) {
             //Para eliminar localmente
             //findbook.postValue(bookAplication.searchBook(nameBook))
 
-            findbookServer.postValue(bookServerRepository.searchBook(nameBook))
-
+            //Para eliminar en el servidor
+            val result = bookServerRepository.loadBooksServer()
+                var isFoundBook = false
+                for (document in result) {
+                    val bookServer = document.toObject<BookServer>()
+                    if (nameBook == bookServer.name) {
+                        findbookServer.postValue(bookServer)
+                        isFoundBook = true
+                    }
+                }
+                if(!isFoundBook) findbookServer.postValue(null)
         }
     }
 

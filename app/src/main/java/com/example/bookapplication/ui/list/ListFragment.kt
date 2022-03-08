@@ -10,14 +10,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookapplication.databinding.FragmentListBinding
 import com.example.bookapplication.local.Book
-
+import com.example.bookapplication.server.BookServer
 
 class ListFragment : Fragment() {
 
     private lateinit var listBinding: FragmentListBinding
     private lateinit var listviewModel: ListViewModel
     private lateinit var booksAdapter: BooksAdapter
-    private var booksList: ArrayList<Book> = ArrayList()
+    private var booksList: ArrayList<Book> = ArrayList()  //Room
+    private var booksListFromServer: ArrayList<BookServer> = ArrayList()  //Firebase
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,14 +34,18 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        listviewModel.loadBooksDone.observe(viewLifecycleOwner, {result->
+        listviewModel.loadBooksDone.observe(viewLifecycleOwner) { result ->
             onLoadBooksDoneSubscribe(result)
-        })
+        }
 
-        listviewModel.loadBooks()
+        listviewModel.loadBooksServerDone.observe(viewLifecycleOwner){ result ->
+            onLoadBooksFromServerDoneSubscribe(result)
+        }
 
+        //listviewModel.loadBooks()
+        listviewModel.loadBooksServer()
 
-        booksAdapter = BooksAdapter(booksList)
+        booksAdapter = BooksAdapter(booksListFromServer)
 
         listBinding.booksRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ListFragment.requireContext())
@@ -54,10 +59,15 @@ class ListFragment : Fragment() {
 
     }
 
-    private fun onLoadBooksDoneSubscribe(booksListLoaded: ArrayList<Book>) {
-        booksList = booksListLoaded
-        booksAdapter.appendItems(booksList)
-    }
+    private fun onLoadBooksFromServerDoneSubscribe(booksListFromServerLoaded: ArrayList<BookServer>) {
+        booksListFromServer = booksListFromServerLoaded
+        booksAdapter.appendItems(booksListFromServer)
+    }        //Firevase
+
+   private fun onLoadBooksDoneSubscribe(booksListLoaded: ArrayList<Book>) {
+        //booksList = booksListLoaded
+        //booksAdapter.appendItems(booksList)
+   }         //Room
 
 
 }

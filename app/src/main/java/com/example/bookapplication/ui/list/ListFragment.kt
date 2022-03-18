@@ -2,6 +2,7 @@ package com.example.bookapplication.ui.list
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,7 +46,7 @@ class ListFragment : Fragment() {
         //listviewModel.loadBooks()
         listviewModel.loadBooksServer()
 
-        booksAdapter = BooksAdapter(booksListFromServer)
+        booksAdapter = BooksAdapter(booksListFromServer, onItemClicked = {onBookItemClicked(it)})
 
         listBinding.booksRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ListFragment.requireContext())
@@ -56,7 +57,11 @@ class ListFragment : Fragment() {
         listBinding.newButton.setOnClickListener {
             findNavController().navigate(ListFragmentDirections.actionListFragmentToNewBookFragment())
         }
+    }
 
+    private fun onBookItemClicked(book: BookServer) {
+        findNavController().navigate(ListFragmentDirections.actionListFragmentToDetailFragment(book))
+        book.name?.let{Log.d("nombre:",it)}
     }
 
     private fun onLoadBooksFromServerDoneSubscribe(booksListFromServerLoaded: ArrayList<BookServer>) {

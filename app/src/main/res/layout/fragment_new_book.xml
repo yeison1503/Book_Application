@@ -27,17 +27,29 @@ android:fillViewport="true">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/photo_image_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/name_book_text_imput_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_text_View"
+        app:srcCompat="@drawable/ic_camera" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_book_text_imput_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_text_View">
+        tools:layout_editor_absoluteY="67dp"
+        app:layout_constraintTop_toBottomOf="@+id/photo_image_view">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name_book_edit_text"
@@ -271,6 +283,8 @@ android:fillViewport="true">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/save_button" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

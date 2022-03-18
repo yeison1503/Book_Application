@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.bookapplication.databinding.FragmentDetailBinding
 import androidx.navigation.fragment.navArgs
+import com.example.bookapplication.server.BookServer
 
 
 class DetailFragment : Fragment() {
@@ -15,7 +16,7 @@ class DetailFragment : Fragment() {
 
     private lateinit var detailBinding: FragmentDetailBinding
     private lateinit var detailviewModel: DetailViewModel
-    //private val args: DetailFragmentArgs by navArgs()
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +31,11 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       /* val book = args.book
+       val book: BookServer = args.book
 
         with(detailBinding){
             nameBookTextView.text = book.name
             authorTextView.text = book.author
-        }*/
+        }
     }
 }

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/drawable/ic_calendar.xml" value="0.290625" />
+        <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/drawable/ic_camera.xml" value="0.2385" />
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/drawable/side_nav_bar.xml" value="0.14" />
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/layout/activity_bottom.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/layout/activity_drawer.xml" value="0.17685185185185184" />
@@ -19,7 +20,7 @@
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/layout/fragment_delete.xml" value="0.2" />
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/layout/fragment_detail.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/layout/fragment_list.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/layout/fragment_new_book.xml" value="0.2604166666666667" />
+        <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/layout/fragment_new_book.xml" value="0.2574074074074074" />
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/layout/fragment_tabs.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/layout/fragment_update.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/yeiso/Desktop/Dispositivos/proyectos/BookAplication/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />

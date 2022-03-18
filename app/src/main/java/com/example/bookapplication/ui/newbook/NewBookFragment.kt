@@ -1,8 +1,12 @@
 package com.example.bookapplication.ui.newbook
 
+import android.app.Activity.RESULT_OK
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.graphics.Bitmap
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +24,8 @@ class NewBookFragment : Fragment() {
 
     private var cal = Calendar.getInstance()
     private var publicationDate = ""
+
+    val REQUEST_IMAGE_CAPTURE = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,6 +78,26 @@ class NewBookFragment : Fragment() {
                     pagesEditText.text.toString()
                 )
             }
+
+            photoImageView.setOnClickListener{
+                dispatchTakePictureIntent()
+                }
+        }
+    }
+
+
+    private fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+                takePictureIntent.resolveActivity(requireActivity().packageManager).also {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            newBookBinding.photoImageView.setImageBitmap(imageBitmap)
         }
     }
 
